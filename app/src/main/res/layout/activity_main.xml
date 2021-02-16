@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.example.microlytxtask.InfoViewModel" />
+
+    </data>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity">
+
+            <TextView
+                android:id="@+id/isp_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="fetching..."
+                app:layout_constraintBottom_toTopOf="@+id/ipAd_tv"
+                app:layout_constraintEnd_toEndOf="@+id/extras_tv"
+                app:layout_constraintStart_toStartOf="@+id/extras_tv"
+                app:layout_constraintTop_toBottomOf="@+id/extras_tv" />
+
+            <TextView
+                android:id="@+id/extras_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@string/extra_information"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/isp_tv"
+                app:layout_constraintEnd_toEndOf="@+id/model_tv"
+                app:layout_constraintStart_toStartOf="@+id/model_tv"
+                app:layout_constraintTop_toBottomOf="@+id/model_tv" />
+
+            <TextView
+                android:id="@+id/ipAd_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                app:layout_constraintBottom_toTopOf="@+id/city_tv"
+                app:layout_constraintEnd_toEndOf="@+id/isp_tv"
+                app:layout_constraintStart_toStartOf="@+id/isp_tv"
+                app:layout_constraintTop_toBottomOf="@+id/isp_tv" />
+
+            <TextView
+                android:id="@+id/countryCode_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/city_tv"
+                app:layout_constraintStart_toStartOf="@+id/city_tv"
+                app:layout_constraintTop_toBottomOf="@+id/city_tv" />
+
+            <TextView
+                android:id="@+id/city_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/countryCode_tv"
+                app:layout_constraintEnd_toEndOf="@+id/ipAd_tv"
+                app:layout_constraintStart_toStartOf="@+id/ipAd_tv"
+                app:layout_constraintTop_toBottomOf="@+id/ipAd_tv" />
+
+            <TextView
+                android:id="@+id/mcc_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@{ `MCC: ` + viewmodel.mobileCountryCode}"
+                app:layout_constraintBottom_toTopOf="@+id/mnc_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/mnc_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{`MNC: ` + viewmodel.mobileNetworkCode}"
+                app:layout_constraintBottom_toTopOf="@+id/zipcode_tv"
+                app:layout_constraintEnd_toEndOf="@+id/mcc_tv"
+                app:layout_constraintStart_toStartOf="@+id/mcc_tv"
+                app:layout_constraintTop_toBottomOf="@+id/mcc_tv" />
+
+            <TextView
+                android:id="@+id/zipcode_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{`Zipcode: ` + viewmodel.countryZipCode}"
+                app:layout_constraintBottom_toTopOf="@+id/cid_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/mnc_tv"
+                app:layout_constraintTop_toBottomOf="@+id/mnc_tv" />
+
+            <TextView
+                android:id="@+id/cid_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@{`Cell ID: ` + viewmodel.cellID}"
+                app:layout_constraintBottom_toTopOf="@+id/networkType_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/zipcode_tv"
+                app:layout_constraintTop_toBottomOf="@+id/zipcode_tv" />
+
+            <TextView
+                android:id="@+id/networkType_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@{`Network Type: ` + viewmodel.networkType}"
+                app:layout_constraintBottom_toTopOf="@+id/signalStrength_tv"
+                app:layout_constraintEnd_toEndOf="@+id/cid_tv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cid_tv" />
+
+            <TextView
+                android:id="@+id/signalStrength_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@{`Signal strength: ` +viewmodel.signalStrength}"
+                app:layout_constraintBottom_toTopOf="@+id/opName_tv"
+                app:layout_constraintEnd_toEndOf="@+id/networkType_tv"
+                app:layout_constraintStart_toStartOf="@+id/networkType_tv"
+                app:layout_constraintTop_toBottomOf="@+id/networkType_tv" />
+
+            <TextView
+                android:id="@+id/opName_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{`Operator name: ` + viewmodel.operatorName}"
+                app:layout_constraintBottom_toTopOf="@+id/isConnected_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/signalStrength_tv"
+                app:layout_constraintTop_toBottomOf="@+id/signalStrength_tv" />
+
+            <TextView
+                android:id="@+id/isConnected_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@{`Connection Status: ` + String.valueOf(viewmodel.networkConnected)}"
+                app:layout_constraintBottom_toTopOf="@+id/latlon_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/opName_tv"
+                app:layout_constraintTop_toBottomOf="@+id/opName_tv" />
+
+            <TextView
+                android:id="@+id/latlon_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/handsetMake_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/isConnected_tv"
+                app:layout_constraintTop_toBottomOf="@+id/isConnected_tv" />
+
+            <TextView
+                android:id="@+id/handsetMake_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/model_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/latlon_tv"
+                app:layout_constraintTop_toBottomOf="@+id/latlon_tv" />
+
+            <TextView
+                android:id="@+id/model_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/extras_tv"
+                app:layout_constraintEnd_toEndOf="@+id/handsetMake_tv"
+                app:layout_constraintStart_toStartOf="@+id/handsetMake_tv"
+                app:layout_constraintTop_toBottomOf="@+id/handsetMake_tv" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
